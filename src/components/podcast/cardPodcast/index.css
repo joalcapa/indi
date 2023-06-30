@@ -1,0 +1,19 @@
+.podcast-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+.podcast-container {
+    background-color: darkgray;
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.podcast-author {
+    font-size: 12px;
+    color: rgb(70, 70, 70);
+}

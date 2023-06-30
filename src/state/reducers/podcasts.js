@@ -1,15 +1,31 @@
-import { createReducer } from '@reduxjs/toolkit';
-import actions from '../actions/podcasts';
+import { createSlice } from '@reduxjs/toolkit';
+import action from '../actions/podcasts';
 
-const initialState = { 
-    podcasts: [ ],
+const initialState = {
+  podcasts: [],
+  loading: false,
+  error: null,
 };
 
-const reducer = createReducer(initialState, (builder) => {
+const podcastsSlice = createSlice({
+  name: 'podcasts',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
     builder
-        .addCase(actions.getPodcasts, (state, action) => {        
-            state.podcasts = [];
-        })
+      .addCase(action.getPodcasts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(action.getPodcasts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.podcasts = action.payload;
+      })
+      .addCase(action.getPodcasts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
 });
 
-export default reducer;
+export default podcastsSlice.reducer;
