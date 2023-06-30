@@ -4,6 +4,6 @@
 }
 
 .dashboard-item {
-    flex: 1 0 200px; /* Cambia 200px al ancho deseado para los elementos de la grilla */
-  margin: 10px;
+    flex: 1 0 200px;
+    margin: 10px;
 }

@@ -29,6 +29,7 @@ Dashboard.defaultProps = {
 };
 
 const DashboardHoc = (props) => {
+    console.log('oooo: ', props)
     const hook = useDashboard(props);
     return <Dashboard {...hook} />;
 };
@@ -43,7 +44,10 @@ DashboardHoc.defaultProps = {
     podcasts: [],
 };
 
-const mapState = (state) => state.podcasts;
+const mapState = (state) => ({
+    podcasts: state.podcasts.podcasts,
+    date: state.podcasts.date,
+});
 
 const mapDispatch = {
     getPodcasts: podcastsActions.getPodcasts,

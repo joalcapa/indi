@@ -5,6 +5,7 @@ const initialState = {
   podcasts: [],
   loading: false,
   error: null,
+  date: null,
 };
 
 const podcastsSlice = createSlice({
@@ -20,6 +21,7 @@ const podcastsSlice = createSlice({
       .addCase(action.getPodcasts.fulfilled, (state, action) => {
         state.loading = false;
         state.podcasts = action.payload;
+        state.date = new Date().toLocaleString();
       })
       .addCase(action.getPodcasts.rejected, (state, action) => {
         state.loading = false;
