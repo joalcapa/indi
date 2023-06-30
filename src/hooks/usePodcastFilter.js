@@ -16,8 +16,7 @@ const usePodcastFilter = (props = {}) => {
                     podcast["im:name"].label.toLowerCase().includes(filter.toLowerCase()) || 
                     podcast["im:artist"].label.toLowerCase().includes(filter.toLowerCase())
                 )
-            ))
-            .map((podcast) => ({
+            )).map((podcast) => ({
                 key: podcast["id"].attributes["im:id"],
                 title: podcast["im:name"].label,
                 author: podcast["im:artist"].label,

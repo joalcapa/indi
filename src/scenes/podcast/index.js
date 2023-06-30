@@ -1,21 +1,24 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import PodcastInfo from '../../components/podcast/podcastInfo';
 import usePodcast from '../../hooks/usePodcast';
 import podcastsActions from '../../state/actions/podcasts';
 import './index.css';
 
 const Podcast = (props) => (
     <div className="dashboard-items">
-        {props.podcastId}
+        <PodcastInfo {...props.podcast} />
     </div>
 );
 
 Podcast.propTypes = {
     podcastId: PropTypes.string,
+    podcast: PropTypes.shape({}),
 };
 
 Podcast.defaultProps = {
     podcastId: '',
+    podcast: {},
 };
 
 const PodcastHoc = (props) => {
