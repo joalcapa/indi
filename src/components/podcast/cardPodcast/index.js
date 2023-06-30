@@ -4,7 +4,10 @@ import './index.css';
 const CardPodcast = (props) => (
     <div className="podcast-content" onClick={props.onClick}>
         <div className="podcast-image-container">
-            <img src={props.image} className="podcast-image"/>
+            <img 
+                src={props.image} 
+                className="podcast-image"
+            />
         </div>
         <div className="podcast-container box-shadow">
             <div className="podcast-text-center">

@@ -1,27 +1,23 @@
 import { useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { isReloadResource } from '../utils';
 
 const usePodcast = (props = {}) => {
     const { getEpisodes, episodes, podcasts } = props;
     const { podcastId = '' } = useParams();
-
-    console.log('tote', episodes);
+    const navigate = useNavigate();
 
     useEffect(() => {
         let isFetch = true;
 
         if (isFetch) {
-            console.log("aquiii");
-            let isCurrentDateGreaterThanOldDate = true;
+            let isReload = true;
 
             if (episodes[podcastId]) {
-                const currentDate = new Date();
-                currentDate.setHours(0, 0, 0, 0);
-                const differenceInDays = Math.floor((currentDate - new Date(episodes[podcastId].date)) / 86400000);
-                isCurrentDateGreaterThanOldDate = differenceInDays > 0;
+                isReload = isReloadResource(episodes[podcastId].date);
             }
 
-            if (isCurrentDateGreaterThanOldDate) {
+            if (isReload) {
                 getEpisodes(podcastId);
             }
 
@@ -34,20 +30,16 @@ const usePodcast = (props = {}) => {
     }, []);
 
     const podcastInfo = useMemo(() => {
-        return podcasts.filter((podcast) => (
-            podcast["id"].attributes["im:id"] === podcastId
-        )).map((podcast) => ({
-            key: podcast["id"].attributes["im:id"],
-            title: podcast["im:name"].label,
-            author: podcast["im:artist"].label,
-            image: podcast["im:image"][2].label,
-            description: podcast["summary"].label,
-        }))[0];
+        return podcasts.filter((podcast) => (podcast.id === podcastId))[0];
     }, [podcasts, podcastId]);
 
     return {
         podcast: podcastInfo,
         episodes: (episodes[podcastId] || { episodes: [] })['episodes']
+            .map((item) => ({
+                ...item, 
+                onClick: () => navigate(`/podcast/${podcastId}/episode/${item.id}`),
+            })),
     };
 };
 

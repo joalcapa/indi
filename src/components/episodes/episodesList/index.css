@@ -22,9 +22,16 @@
 }
 
 .episodes-count {
+    width: 600px;
     padding: 15px;
 }
 
 .list-content {
     padding: 15px;
+}
+
+.episode-link {
+    cursor: pointer;
+    color: rgb(0, 106, 255);
+    font-weight: bold;
 }

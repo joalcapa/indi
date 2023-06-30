@@ -13,8 +13,8 @@
 }
 
 .podcast-image-container {
-    top: 30;
     position: relative;
+    top: 30px;
 }
 
 .podcast-container {

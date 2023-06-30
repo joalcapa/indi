@@ -13,11 +13,15 @@ export const getEpisodes = createAsyncThunk(
       console.log(response.rss.channel.item);
       const episodes = response.rss.channel.item.map(episode => {
         const dateObj = new Date(episode["pubDate"]["#text"]["#text"]);
-      
+        const title = episode["title"]["#text"]["#text"];
+
         return {
+            id: title,
+            title: title,
             duration: episode["itunes:duration"]["#text"]["#text"],
+            description: episode["description"]["#text"]["#text"],
             date: `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`,
-            title: episode["title"]["#text"]["#text"],
+            raw: episode["enclosure"]["@attributes"],
         };
       });
 
@@ -28,7 +32,8 @@ export const getEpisodes = createAsyncThunk(
         date: new Date().toLocaleString(),
       };
 
-      return { ...item }
+      console.log('mi:', { ...item });
+      return { ...item };
     } catch (error) {
       throw error;
     }

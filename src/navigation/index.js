@@ -5,6 +5,10 @@ import Podcast from '../scenes/podcast';
 
 export const router = createBrowserRouter([
     {
+      path: "/podcast/:podcastId/episode/:episodeId",
+      element: <Podcast />,
+    },
+    {
       path: "/podcast/:podcastId",
       element: <Podcast />,
     },

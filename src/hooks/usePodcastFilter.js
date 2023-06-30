@@ -13,15 +13,12 @@ const usePodcastFilter = (props = {}) => {
     const podcastFilter = useMemo(() => {
         return podcasts.filter((podcast) => (
                 !filter ? true : (
-                    podcast["im:name"].label.toLowerCase().includes(filter.toLowerCase()) || 
-                    podcast["im:artist"].label.toLowerCase().includes(filter.toLowerCase())
+                    podcast.title.toLowerCase().includes(filter.toLowerCase()) || 
+                    podcast.author.toLowerCase().includes(filter.toLowerCase())
                 )
             )).map((podcast) => ({
-                key: podcast["id"].attributes["im:id"],
-                title: podcast["im:name"].label,
-                author: podcast["im:artist"].label,
-                image: podcast["im:image"][0].label,
-                onClick: () => navigate(`/podcast/${podcast["id"].attributes["im:id"]}`),
+                ...podcast,
+                onClick: () => navigate(`/podcast/${podcast.id}`),
             }));
     }, [ podcasts, filter ]);
 
