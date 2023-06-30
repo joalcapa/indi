@@ -1,4 +1,4 @@
-import { ENDPOINTS_COLLECTION } from '../config/constants';
+import { ENDPOINTS_COLLECTION, CORS_API_RAW_URL } from '../config/constants';
 import apiCall from '../middlewares/apiCall';
 
 const getPodcasts = () => {
@@ -21,7 +21,19 @@ const getPodcast = (podcastId) => {
     });
 };
 
+const getFeed = (url) => {
+    return apiCall({
+        url: `${CORS_API_RAW_URL}${url}`,
+        method: 'get',
+        isXml: true,
+        headers: {
+            "Accept": "application/xml",
+        }
+    });
+};
+
 export default {
     getPodcasts,
     getPodcast,
+    getFeed,
 };

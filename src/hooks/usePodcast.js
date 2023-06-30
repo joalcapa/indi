@@ -5,6 +5,8 @@ const usePodcast = (props = {}) => {
     const { getPodcast, podcast, podcasts } = props;
     const { podcastId = '' } = useParams();
 
+    console.log(podcast);
+
     useEffect(() => {
         let isFetch = true;
 

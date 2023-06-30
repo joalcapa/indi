@@ -20,8 +20,12 @@ export const getPodcast = createAsyncThunk(
     try {
       console.log("llamando: ", payload);
       const response = await service.getPodcast(payload);
+      const url = response.results[0].feedUrl;
       console.log("response -->>>: ", response);
-      return response;
+
+      const episodesResp = await service.getFeed(url);
+      console.log('episodes: ', episodesResp);
+      return episodesResp.rss.channel;
     } catch (error) {
       console.log(error);
       throw error;
