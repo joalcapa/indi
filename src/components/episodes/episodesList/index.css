@@ -1,0 +1,30 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+.table-row {
+    display: flex;
+}
+  
+.table-cell {
+    flex: 1;
+    padding: 8px;
+}
+  
+.header {
+    font-weight: bold;
+}
+
+.episodes-list-content {
+    width: 600px;
+    margin-left: 100px;
+}
+
+.episodes-count {
+    padding: 15px;
+}
+
+.list-content {
+    padding: 15px;
+}

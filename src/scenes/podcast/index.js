@@ -1,24 +1,26 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import EpisodesList from '../../components/episodes/episodesList';
 import PodcastInfo from '../../components/podcast/podcastInfo';
 import usePodcast from '../../hooks/usePodcast';
-import podcastsActions from '../../state/actions/podcasts';
+import episodesActions from '../../state/actions/episodes';
 import './index.css';
 
 const Podcast = (props) => (
-    <div className="dashboard-items">
+    <div className="dashboard-container">
         <PodcastInfo {...props.podcast} />
+        <EpisodesList episodes={props.episodes} />
     </div>
 );
 
 Podcast.propTypes = {
-    podcastId: PropTypes.string,
     podcast: PropTypes.shape({}),
+    episodes: PropTypes.array,
 };
 
 Podcast.defaultProps = {
-    podcastId: '',
     podcast: {},
+    episodes: [],
 };
 
 const PodcastHoc = (props) => {
@@ -27,23 +29,24 @@ const PodcastHoc = (props) => {
 };
 
 PodcastHoc.propTypes = {
-    getPodcast: PropTypes.func,
+    getEpisodes: PropTypes.func,
     podcasts: PropTypes.array,
+    episodes: PropTypes.shape({}),
 };
 
 PodcastHoc.defaultProps = {
-    getPodcast: () => {},
+    getEpisodes: () => {},
     podcasts: [],
+    episodes: {},
 };
 
 const mapState = (state) => ({
     podcasts: state.podcasts.podcasts,
-    podcast: state.podcasts.podcast,
-    date: state.podcasts.date,
+    episodes: state.episodes.episodes,
 });
 
 const mapDispatch = {
-    getPodcast: podcastsActions.getPodcast,
+    getEpisodes: episodesActions.getEpisodes,
 };
 
 export default connect(mapState, mapDispatch)(PodcastHoc);
