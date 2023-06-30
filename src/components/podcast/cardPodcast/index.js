@@ -2,11 +2,17 @@ import PropTypes from 'prop-types';
 import './index.css';
 
 const CardPodcast = (props) => (
-    <div>
-        <img src={props.image} className="podcast-image" />
-        <div className="podcast-container">
-            <div>{props.title}</div>
-            <div className="podcast-author">Author: {props.author}</div>
+    <div className="podcast-content">
+        <div className="podcast-image-container">
+            <img src={props.image} className="podcast-image"/>
+        </div>
+        <div className="podcast-container box-shadow">
+            <div className="podcast-text-center">
+                {props.title}
+            </div>
+            <div className="podcast-text-center podcast-author">
+                Author: {props.author}
+            </div>
         </div>
     </div>
 );

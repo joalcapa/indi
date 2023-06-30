@@ -3,19 +3,30 @@ import { connect } from 'react-redux';
 import useDashboard from '../../hooks/useDashboard';
 import CardPodcast from '../../components/podcast/cardPodcast';
 import podcastsActions from '../../state/actions/podcasts';
+import './index.css';
 
 const Dashboard = (props) => (
-    <div style={{display: 'flex', flexDirection: 'row'}}>
+    <div className="dashboard-container">
         {props.podcasts.map((podcast) => (
-            <CardPodcast
-                key={podcast["id"].attributes["im:id"]}
-                title={podcast["im:name"].label}
-                author={podcast["im:artist"].label}
-                image={podcast["im:image"][0].label}
-            />
+            <div className='dashboard-item'>
+                <CardPodcast
+                    key={podcast["id"].attributes["im:id"]}
+                    title={podcast["im:name"].label}
+                    author={podcast["im:artist"].label}
+                    image={podcast["im:image"][0].label}
+                />
+            </div>
         ))}
     </div>
 );
+
+Dashboard.propTypes = {
+    podcasts: PropTypes.array,
+};
+
+Dashboard.defaultProps = {
+    podcasts: [],
+};
 
 const DashboardHoc = (props) => {
     const hook = useDashboard(props);
@@ -24,10 +35,12 @@ const DashboardHoc = (props) => {
 
 DashboardHoc.propTypes = {
     getPodcasts: PropTypes.func,
+    podcasts: PropTypes.array,
 };
 
 DashboardHoc.defaultProps = {
     getPodcasts: () => {},
+    podcasts: [],
 };
 
 const mapState = (state) => state.podcasts;
