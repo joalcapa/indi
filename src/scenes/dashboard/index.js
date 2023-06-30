@@ -1,5 +1,9 @@
+import CardPodcast from '../../components/podcast/cardPodcast';
+
 const Dashboard = () => (
-    <div>Hola mundo</div>
+    <div>
+        <CardPodcast title='All songs' author='NPR' />
+    </div>
 );
 
 export default Dashboard;
