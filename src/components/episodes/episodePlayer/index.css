@@ -1,0 +1,24 @@
+.episodes-list-content {
+    width: 600px;
+    margin-left: 100px;
+    padding: 25px;
+}
+
+.episode-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.episode-description {
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.player {
+    width: 100%;
+}
+
+.episode-player {
+    width: 100%;
+    padding-top: 5px;
+}

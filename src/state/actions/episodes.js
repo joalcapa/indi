@@ -11,13 +11,13 @@ export const getEpisodes = createAsyncThunk(
 
       const response = await service.getFeed(url);
       console.log(response.rss.channel.item);
-      const episodes = response.rss.channel.item.map(episode => {
+      const episodes = response.rss.channel.item.filter(episode => (episode["itunes:episode"] && episode["itunes:episode"]["#text"] && episode["itunes:episode"]["#text"]["#text"])).map(episode => {
         const dateObj = new Date(episode["pubDate"]["#text"]["#text"]);
-        const title = episode["title"]["#text"]["#text"];
 
+        console.log('episode ------', episode["itunes:episode"]["#text"]["#text"]);
         return {
-            id: title,
-            title: title,
+            id: episode["itunes:episode"]["#text"]["#text"],
+            title: episode["title"]["#text"]["#text"],
             duration: episode["itunes:duration"]["#text"]["#text"],
             description: episode["description"]["#text"]["#text"],
             date: `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`,

@@ -18,6 +18,7 @@ const usePodcast = (props = {}) => {
             }
 
             if (isReload) {
+                console.log('vamos por episoios: ', podcastId);
                 getEpisodes(podcastId);
             }
 
@@ -33,6 +34,7 @@ const usePodcast = (props = {}) => {
         return podcasts.filter((podcast) => (podcast.id === podcastId))[0];
     }, [podcasts, podcastId]);
 
+    console.log('EPISO: ', episodes);
     return {
         podcast: podcastInfo,
         episodes: (episodes[podcastId] || { episodes: [] })['episodes']
