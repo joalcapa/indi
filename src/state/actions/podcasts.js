@@ -12,8 +12,24 @@ export const getPodcasts = createAsyncThunk(
         throw error;
       }
     }
-  );
+);
+
+export const getPodcast = createAsyncThunk(
+  types.GET_PODCAST,
+  async (payload) => {
+    try {
+      console.log("llamando: ", payload);
+      const response = await service.getPodcast(payload);
+      console.log("response -->>>: ", response);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+);
 
 export default {
     getPodcasts,
+    getPodcast,
 };

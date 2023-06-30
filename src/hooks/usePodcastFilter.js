@@ -1,8 +1,10 @@
 import { useState, useMemo } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const usePodcastFilter = (props = {}) => {
     const { podcasts } = props;
     const [ filter, setFilter ] = useState('');
+    const navigate = useNavigate();
 
     const changeFilter = (event) => {
         setFilter(event.target.value);
@@ -20,6 +22,7 @@ const usePodcastFilter = (props = {}) => {
                 title: podcast["im:name"].label,
                 author: podcast["im:artist"].label,
                 image: podcast["im:image"][0].label,
+                onClick: () => navigate(`/podcast/${podcast["id"].attributes["im:id"]}`),
             }));
     }, [ podcasts, filter ]);
 

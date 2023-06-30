@@ -3,7 +3,7 @@ import axios from 'axios';
 const apiCall = async (config) => {
     try {
         const response = await axios(config);
-        return Promise.resolve(response.data);
+        return Promise.resolve(JSON.parse(response.data.contents));
     } catch (error) {
     }
 };
