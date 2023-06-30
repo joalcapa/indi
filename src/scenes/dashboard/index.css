@@ -7,3 +7,40 @@
     flex: 1 0 200px;
     margin: 10px;
 }
+
+.dashboard-filter-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: 100px;
+}
+
+.dashboard-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-number-filter {
+    width: 40px;
+    color: white;
+    background-color: rgb(1, 90, 255);
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.dashboard-input {
+    text-decoration: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border-color: rgb(194, 194, 194);
+    width: 200px;
+}

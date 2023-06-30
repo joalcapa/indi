@@ -1,38 +1,14 @@
-import { useEffect } from 'react';
+import useFetchPodcasts from './useFetchPodcasts';
+import usePodcastFilter from './usePodcastFilter';
 
 const useDashboard = (props = {}) => {
-    const { getPodcasts, podcasts, date } = props;
-    console.log(props)
-
-    useEffect(() => {
-        let isFetch = false;
-
-        (async () => {
-            try {
-                let isCurrentDateGreaterThanOldDate = !!date;
-
-                if (date) {
-                    const currentDate = new Date();
-                    currentDate.setHours(0, 0, 0, 0);
-                    const differenceInDays = Math.floor((currentDate - new Date(date)) / 86400000);
-                    isCurrentDateGreaterThanOldDate = differenceInDays > 0;
-                }
-
-                if (isCurrentDateGreaterThanOldDate) {
-                    getPodcasts();
-                }
-
-                isFetch = true;
-            } catch (error) {}
-        })();
-
-        return () => {
-            isFetch = false;
-        };
-    }, []);
+    useFetchPodcasts(props);
+    const { podcasts, filter, changeFilter } = usePodcastFilter(props);
 
     return {
         podcasts,
+        filter,
+        changeFilter,
     };
 };
 
