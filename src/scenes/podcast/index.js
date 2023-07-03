@@ -9,7 +9,10 @@ import './index.css';
 
 const Podcast = (props) => (
     <div className="dashboard-container">
-        <PodcastInfo {...props.podcast} />
+        <PodcastInfo 
+            {...props.podcast} 
+            onPodcastInfo={props.onPodcastInfo}
+        />
         {
             props.isLoading ? 
                 <div className='loading'>loading episodes, that may take a few minutes</div> : 
@@ -21,11 +24,13 @@ const Podcast = (props) => (
 Podcast.propTypes = {
     podcast: PropTypes.shape({}),
     episodes: PropTypes.array,
+    onPodcastInfo: PropTypes.func,
 };
 
 Podcast.defaultProps = {
     podcast: {},
     episodes: [],
+    onPodcastInfo: () => {},
 };
 
 const PodcastHoc = (props) => {

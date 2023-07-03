@@ -8,13 +8,13 @@ const useFetchPodcasts = (props = {}) => {
         let isFetch = true;
 
         if (isFetch) {
-            let isreload = !date;
+            let isReload = !date;
 
             if (date) {
-                isreload = isReloadResource(date);
+                isReload = isReloadResource(date);
             }
 
-            if (isreload) {
+            if (isReload) {
                 getPodcasts();
                 isFetch = false;
             }

@@ -3,12 +3,23 @@ import './index.css';
 
 const PodcastInfo = (props) => (
     <div className="box-shadow podcast-info-container">
-        <div className="podcast-info-image-content">
+        <div 
+            className="podcast-info-image-content cursor" 
+            onClick={props.onPodcastInfo}
+        >
             <img src={props.image} className="podcast-info-image" />
         </div>
         <div className="podcast-info-title">
-            <div>{props.title}</div>
-            <div className="podcast-info-author">
+            <div 
+                className="cursor"
+                onClick={props.onPodcastInfo}
+            >
+                {props.title}
+            </div>
+            <div 
+                className="podcast-info-author cursor"
+                onClick={props.onPodcastInfo}
+            >
                 by {props.author}
             </div>
         </div>
@@ -26,6 +37,7 @@ PodcastInfo.propTypes = {
     author: PropTypes.string,
     image: PropTypes.string,
     description: PropTypes.string,
+    onPodcastInfo: PropTypes.func,
 };
 
 PodcastInfo.defaultProps = {
@@ -33,6 +45,7 @@ PodcastInfo.defaultProps = {
     author: '',
     image: '',
     description: '',
+    onPodcastInfo: () => {},
 };
 
 export default PodcastInfo;

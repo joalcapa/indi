@@ -39,9 +39,14 @@ export const xmlToConvert = (xml) => {
     return jsonObj;
 };
 
-export const isReloadResource = (date) => {
-    const currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0);
-    const differenceInDays = Math.floor((currentDate - new Date(date)) / 86400000);
-    return differenceInDays > 0;
+export const isReloadResource = (dateString) => {
+  var parts = dateString.split("/");
+  var day = parseInt(parts[0], 10);
+  var month = parseInt(parts[1], 10) - 1;
+  var year = parseInt(parts[2], 10);
+  var initialDate = new Date(year, month, day);
+  var currentDate = new Date();
+  var difference = currentDate - initialDate;
+  var daysPassed = Math.floor(difference / (1000 * 60 * 60 * 24));
+  return daysPassed >= 1;
 };

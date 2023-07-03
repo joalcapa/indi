@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
 import { isReloadResource } from '../utils';
 
 const usePodcast = (props = {}) => {
@@ -18,7 +18,6 @@ const usePodcast = (props = {}) => {
             }
 
             if (isReload) {
-                console.log('vamos por episoios: ', podcastId);
                 getEpisodes(podcastId);
             }
 
@@ -34,9 +33,13 @@ const usePodcast = (props = {}) => {
         return podcasts.filter((podcast) => (podcast.id === podcastId))[0];
     }, [podcasts, podcastId]);
 
-    console.log('EPISO: ', episodes);
+    const onPodcastInfo = () => {
+        navigate(`/podcast/${podcastId}`)
+    };
+
     return {
         isLoading,
+        onPodcastInfo,
         podcast: podcastInfo,
         episodes: (episodes[podcastId] || { episodes: [] })['episodes']
             .map((item) => ({

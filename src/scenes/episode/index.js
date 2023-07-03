@@ -9,7 +9,10 @@ import './index.css';
 
 const Episode = (props) => (
     <div className="dashboard-container">
-        <PodcastInfo {...props.podcast} />
+        <PodcastInfo 
+            {...props.podcast} 
+            onPodcastInfo={props.onPodcastInfo}
+        />
         <EpisodePlayer episode={props.episode} />
     </div>
 );
@@ -17,11 +20,13 @@ const Episode = (props) => (
 Episode.propTypes = {
     podcast: PropTypes.shape({}),
     episode: PropTypes.shape({}),
+    onPodcastInfo: PropTypes.func,
 };
 
 Episode.defaultProps = {
     podcast: {},
     episode: {},
+    onPodcastInfo: () => {},
 };
 
 const EpisodeHoc = (props) => {
