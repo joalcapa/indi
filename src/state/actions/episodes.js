@@ -10,10 +10,12 @@ export const getEpisodes = createAsyncThunk(
       const url = r.results[0].feedUrl;
       const response = await service.getFeed(url);
 
-      console.log('EPISODIOS --- 1');
-      console.log(response.rss.channel.item);
-      console.log('EPISODIOS --- 2');
-      const episodes = response.rss.channel.item
+      const episodes = (
+        Array.isArray(response.rss.channel.item) ? 
+          response.rss.channel.item : 
+          [ response.rss.channel.item ]
+        )
+        .filter((episode) => !!episode["enclosure"])
         .map((episode, index) => {
           const dateObj = new Date(episode["pubDate"]["#text"]["#text"]);
 
@@ -36,7 +38,6 @@ export const getEpisodes = createAsyncThunk(
 
       return { ...item };
     } catch (error) {
-      console.log("Error: ", error);
       throw error;
     }
   }

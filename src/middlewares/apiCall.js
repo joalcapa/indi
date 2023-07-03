@@ -10,7 +10,7 @@ const apiCall = async (config) => {
         if (isXml) {
             payload = xmlToJson(response.data);
         } else {
-            payload = JSON.parse(response.data.contents);
+            payload = response.data;
         }
 
         return Promise.resolve(payload);
