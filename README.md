@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+Esta es una aplicación basada en Create React App. Te permite explorar podcasts utilizando Redux, navegación y componentes funcionales.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requisitos previos
 
-## Available Scripts
+Antes de comenzar, asegúrate de tener instalados los siguientes elementos en tu entorno de desarrollo:
 
-In the project directory, you can run:
+- [Node.js](https://nodejs.org) (versión 12 o superior)
+- [npm](https://www.npmjs.com/) (normalmente se instala junto con Node.js)
 
-### `npm start`
+## Instalación
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Sigue estos pasos para configurar el proyecto localmente:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clona este repositorio en tu máquina local.
 
-### `npm test`
+   ```bash
+   git clone https://github.com/joalcapa/indi.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navega hasta el directorio del proyecto.
 
-### `npm run build`
+   ```bash
+   cd indi
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Instala las dependencias del proyecto.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Configuración
 
-### `npm run eject`
+Antes de ejecutar la aplicación, necesitarás agregar un archivo `env.js` en la carpeta `config` con el siguiente contenido:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+export const ENV = 'local';
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export const CORS_API = {
+    local: "https://api.allorigins.win/get?url=", 
+};
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+export const CORS_API_RAW = {
+    local: "https://api.allorigins.win/raw?url=", 
+};
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export const API = {
+    local: "https://itunes.apple.com", 
+};
 
-## Learn More
+export const ENDPOINTS = {
+    local: {
+        podcasts: {
+            get: {
+                url: "/us/rss/toppodcasts/limit=100/genre=1310/json",
+                method: "get",
+            },
+            getPodcast: {
+                url: "/lookup?id=:id&country=US&media=podcast&entity=allPodcastEpisode&limit=20",
+                method: "get",
+            },
+        },
+    },
+};
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Asegúrate de que los valores de las URLs en el archivo `env.js` se ajusten a tus necesidades.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Uso
 
-### Code Splitting
+Para ejecutar la aplicación en tu entorno de desarrollo local, utiliza el siguiente comando:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+Esto iniciará el servidor de desarrollo y podrás acceder a la aplicación en tu navegador web, preferiblemente en Google Chrome.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Recomendaciones adicionales
 
-### Making a Progressive Web App
+Es importante mencionar que aunque Create React App ya no se recomienda como herramienta inicial para proyectos React, se sugiere considerar alternativas como Next.js, Gatsby u otras opciones, ya que ofrecen beneficios adicionales para aplicaciones más complejas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sin embargo, he decidido utilizar Create React App en este caso particular para demostrar mis habilidades con Redux, navegación y componentes funcionales.
+```
