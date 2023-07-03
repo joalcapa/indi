@@ -1,8 +1,10 @@
 import { useState, useMemo } from 'react';
+import useNavigation from './useNavigation';
 
 const usePodcastFilter = (props = {}) => {
     const { podcasts } = props;
     const [ filter, setFilter ] = useState('');
+    const { navigate } = useNavigation(props);
 
     const changeFilter = (event) => {
         setFilter(event.target.value);
@@ -11,15 +13,12 @@ const usePodcastFilter = (props = {}) => {
     const podcastFilter = useMemo(() => {
         return podcasts.filter((podcast) => (
                 !filter ? true : (
-                    podcast["im:name"].label.toLowerCase().includes(filter.toLowerCase()) || 
-                    podcast["im:artist"].label.toLowerCase().includes(filter.toLowerCase())
+                    podcast.title.toLowerCase().includes(filter.toLowerCase()) || 
+                    podcast.author.toLowerCase().includes(filter.toLowerCase())
                 )
-            ))
-            .map((podcast) => ({
-                key: podcast["id"].attributes["im:id"],
-                title: podcast["im:name"].label,
-                author: podcast["im:artist"].label,
-                image: podcast["im:image"][0].label,
+            )).map((podcast) => ({
+                ...podcast,
+                onClick: () => navigate(`/podcast/${podcast.id}`),
             }));
     }, [ podcasts, filter ]);
 

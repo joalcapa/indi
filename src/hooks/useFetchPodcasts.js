@@ -1,29 +1,24 @@
 import { useEffect } from 'react';
+import { isReloadResource } from '../utils';
 
 const useFetchPodcasts = (props = {}) => {
     const { getPodcasts, podcasts, date } = props;
 
     useEffect(() => {
-        let isFetch = false;
+        let isFetch = true;
 
-        (async () => {
-            try {
-                let isCurrentDateGreaterThanOldDate = !date;
+        if (isFetch) {
+            let isReload = !date;
 
-                if (date) {
-                    const currentDate = new Date();
-                    currentDate.setHours(0, 0, 0, 0);
-                    const differenceInDays = Math.floor((currentDate - new Date(date)) / 86400000);
-                    isCurrentDateGreaterThanOldDate = differenceInDays > 0;
-                }
+            if (date) {
+                isReload = isReloadResource(date);
+            }
 
-                if (isCurrentDateGreaterThanOldDate) {
-                    getPodcasts();
-                }
-
-                isFetch = true;
-            } catch (error) {}
-        })();
+            if (isReload) {
+                getPodcasts();
+                isFetch = false;
+            }
+        }
 
         return () => {
             isFetch = false;

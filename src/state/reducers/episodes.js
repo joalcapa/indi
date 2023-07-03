@@ -1,33 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
-import action from '../actions/podcasts';
+import action from '../actions/episodes';
 
 const initialState = {
-  podcasts: [],
+  episodes: {},
   loading: false,
   error: null,
   date: null,
 };
 
-const podcastsSlice = createSlice({
-  name: 'podcasts',
+const episodesSlice = createSlice({
+  name: 'episodes',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(action.getPodcasts.pending, (state) => {
+      .addCase(action.getEpisodes.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(action.getPodcasts.fulfilled, (state, action) => {
+      .addCase(action.getEpisodes.fulfilled, (state, action) => {
         state.loading = false;
-        state.podcasts = action.payload;
+        state.episodes = { ...state.episodes, ...action.payload };
         state.date = new Date().toLocaleString();
       })
-      .addCase(action.getPodcasts.rejected, (state, action) => {
+      .addCase(action.getEpisodes.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
   },
 });
 
-export default podcastsSlice.reducer;
+export default episodesSlice.reducer;
