@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import BaseScene from '../baseScene';
 import EpisodePlayer from '../../components/episodes/episodePlayer';
 import PodcastInfo from '../../components/podcast/podcastInfo';
 import useEpisode from '../../hooks/useEpisode';
@@ -49,4 +50,4 @@ const mapDispatch = {
     getEpisodes: episodesActions.getEpisodes,
 };
 
-export default connect(mapState, mapDispatch)(EpisodeHoc);
+export default BaseScene(connect(mapState, mapDispatch)(EpisodeHoc));

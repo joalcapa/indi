@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import BaseScene from '../baseScene';
 import EpisodesList from '../../components/episodes/episodesList';
 import PodcastInfo from '../../components/podcast/podcastInfo';
 import usePodcast from '../../hooks/usePodcast';
@@ -9,7 +10,11 @@ import './index.css';
 const Podcast = (props) => (
     <div className="dashboard-container">
         <PodcastInfo {...props.podcast} />
-        <EpisodesList episodes={props.episodes} />
+        {
+            props.isLoading ? 
+                <div className='loading'>loading episodes, that may take a few minutes</div> : 
+                <EpisodesList episodes={props.episodes} />
+        }
     </div>
 );
 
@@ -32,21 +37,24 @@ PodcastHoc.propTypes = {
     getEpisodes: PropTypes.func,
     podcasts: PropTypes.array,
     episodes: PropTypes.shape({}),
+    isLoading: PropTypes.bool,
 };
 
 PodcastHoc.defaultProps = {
     getEpisodes: () => {},
     podcasts: [],
     episodes: {},
+    isLoading: false,
 };
 
 const mapState = (state) => ({
     podcasts: state.podcasts.podcasts,
     episodes: state.episodes.episodes,
+    isLoading: state.episodes.loading,
 });
 
 const mapDispatch = {
     getEpisodes: episodesActions.getEpisodes,
 };
 
-export default connect(mapState, mapDispatch)(PodcastHoc);
+export default BaseScene(connect(mapState, mapDispatch)(PodcastHoc));

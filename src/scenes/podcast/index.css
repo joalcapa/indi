@@ -3,4 +3,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    padding-top: 25px;
+}
+
+.loading {
+    width: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

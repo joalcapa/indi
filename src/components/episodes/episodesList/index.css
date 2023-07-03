@@ -5,11 +5,24 @@
   
 .table-row {
     display: flex;
+    border-bottom: 1px solid rgb(227, 227, 227) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.table-gray {
+    background-color: rgb(248, 248, 248);
 }
   
 .table-cell {
     flex: 1;
     padding: 8px;
+}
+
+.title-cell {
+    flex: 6;
 }
   
 .header {
@@ -17,12 +30,11 @@
 }
 
 .episodes-list-content {
-    width: 600px;
-    margin-left: 100px;
+    width: 800px;
 }
 
 .episodes-count {
-    width: 600px;
+    width: 800px;
     padding: 15px;
 }
 
@@ -30,8 +42,16 @@
     padding: 15px;
 }
 
+.table-list {
+    width: 800px;
+}
+
 .episode-link {
     cursor: pointer;
     color: rgb(0, 106, 255);
     font-weight: bold;
+}
+
+.episodes-list-cont {
+    margin-top: -45px;
 }

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { isReloadResource } from '../utils';
 
 const usePodcast = (props = {}) => {
-    const { getEpisodes, episodes, podcasts } = props;
+    const { getEpisodes, episodes, podcasts, isLoading } = props;
     const { podcastId = '' } = useParams();
     const navigate = useNavigate();
 
@@ -36,6 +36,7 @@ const usePodcast = (props = {}) => {
 
     console.log('EPISO: ', episodes);
     return {
+        isLoading,
         podcast: podcastInfo,
         episodes: (episodes[podcastId] || { episodes: [] })['episodes']
             .map((item) => ({

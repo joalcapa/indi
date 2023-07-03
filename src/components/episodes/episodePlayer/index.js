@@ -31,7 +31,7 @@ const EpisodePlayer = (props) => {
 
 EpisodePlayer.propTypes = {
     episode: PropTypes.shape({
-        id: PropTypes.string,
+        id: PropTypes.number,
         title: PropTypes.string,
         date: PropTypes.string,
         duration: PropTypes.string,

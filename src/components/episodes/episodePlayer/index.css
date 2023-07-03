@@ -1,7 +1,8 @@
 .episodes-list-content {
-    width: 600px;
+    width: 800px;
     margin-left: 100px;
     padding: 25px;
+    margin-top: 5px;
 }
 
 .episode-title {

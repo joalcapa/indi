@@ -2,28 +2,30 @@ import PropTypes from 'prop-types';
 import './index.css';
 
 const EpisodesList = (props) => (
-    <div className='episodes-list-content'>
-      <h3 className="box-shadow episodes-count">
+    <div className='episodes-list-cont'>
+      <div className='episodes-list-content'>
+        <h3 className="box-shadow episodes-count">
           <b>Episodes: {props.episodes.length}</b>
-      </h3>
-      <div className="table box-shadow list-content">
-        <div className="table-row header">
-          <div className="table-cell">Title</div>
-          <div className="table-cell">Date</div>
-          <div className="table-cell">Duration</div>
-        </div>
-        {props.episodes.map((item, index) => (
-          <div className="table-row" key={index}>
-            <div 
-                className="table-cell episode-link" 
-                onClick={item.onClick}
-            >
-                {item.title}
-            </div>
-            <div className="table-cell">{item.date}</div>
-            <div className="table-cell">{item.duration}</div>
+        </h3>
+        <div className="table box-shadow list-content table-list">
+          <div className="table-row header">
+            <div className="title-cell table-cell">Title</div>
+            <div className="table-cell">Date</div>
+            <div className="table-cell">Duration</div>
           </div>
-        ))}
+          {props.episodes.map((item, index) => (
+            <div className="table-row" key={index}>
+              <div 
+                className={`title-cell table-cell episode-link ${index % 2 === 0 ? 'table-gray' : ''}`}
+                onClick={item.onClick}
+              >
+                {item.title}
+              </div>
+              <div className={`table-cell episode-link ${index % 2 === 0 ? 'table-gray' : ''}`}>{item.date}</div>
+              <div className={`table-cell episode-link ${index % 2 === 0 ? 'table-gray' : ''}`}>{item.duration}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
 );

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const usePodcastFilter = (props = {}) => {
     const { podcasts } = props;
