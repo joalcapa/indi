@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import useNavigation from './useNavigation';
 import { isReloadResource } from '../utils';
 
 const usePodcast = (props = {}) => {
     const { getEpisodes, episodes, podcasts, isLoading } = props;
-    const { podcastId = '' } = useParams();
-    const navigate = useNavigate();
+    const { params, navigate } = useNavigation(props);
+    const { podcastId = '' } = params;
 
     useEffect(() => {
         let isFetch = true;

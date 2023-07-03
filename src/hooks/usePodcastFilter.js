@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import useNavigation from './useNavigation';
 
 const usePodcastFilter = (props = {}) => {
     const { podcasts } = props;
     const [ filter, setFilter ] = useState('');
-    const navigate = useNavigate();
+    const { navigate } = useNavigation(props);
 
     const changeFilter = (event) => {
         setFilter(event.target.value);

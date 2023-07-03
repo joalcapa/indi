@@ -38,12 +38,14 @@ EpisodeHoc.propTypes = {
     getEpisodes: PropTypes.func,
     podcasts: PropTypes.array,
     episodes: PropTypes.shape({}),
+    startNavigate: PropTypes.func,
 };
 
 EpisodeHoc.defaultProps = {
     getEpisodes: () => {},
     podcasts: [],
     episodes: {},
+    startNavigate: () => {},
 };
 
 const mapState = (state) => ({

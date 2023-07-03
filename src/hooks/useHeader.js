@@ -1,7 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import useNavigation from './useNavigation';
 
-const useHeader = () => {
-    const navigate = useNavigate();
+const useHeader = (props = {}) => {
+    const { isNavigate } = props;
+    const { navigate } = useNavigation(props);
 
     const onDashboard = () => {
         navigate('/');
@@ -9,6 +10,7 @@ const useHeader = () => {
 
     return {
         onDashboard,
+        isNavigate,
     };
 };
 

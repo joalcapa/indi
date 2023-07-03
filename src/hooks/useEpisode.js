@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
 import usePodcast from './usePodcast';
+import useNavigation from './useNavigation';
 
 const useEpisode = (props = {}) => {
-    const { episodeId = '', podcastId = '' } = useParams();
+    const { params, navigate } = useNavigation(props);
     const { podcast, episodes } = usePodcast(props);
-    const navigate = useNavigate();
+    const { episodeId = '', podcastId = '' } = params;
 
     const episode = useMemo(() => {
         return episodes.filter((item) => {

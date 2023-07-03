@@ -43,6 +43,7 @@ PodcastHoc.propTypes = {
     podcasts: PropTypes.array,
     episodes: PropTypes.shape({}),
     isLoading: PropTypes.bool,
+    startNavigate: PropTypes.func,
 };
 
 PodcastHoc.defaultProps = {
@@ -50,6 +51,7 @@ PodcastHoc.defaultProps = {
     podcasts: [],
     episodes: {},
     isLoading: false,
+    startNavigate: () => {},
 };
 
 const mapState = (state) => ({

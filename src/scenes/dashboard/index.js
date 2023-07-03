@@ -49,11 +49,13 @@ const DashboardHoc = (props) => {
 DashboardHoc.propTypes = {
     getPodcasts: PropTypes.func,
     podcasts: PropTypes.array,
+    startNavigate: PropTypes.func,
 };
 
 DashboardHoc.defaultProps = {
     getPodcasts: () => {},
     podcasts: [],
+    startNavigate: () => {},
 };
 
 const mapState = (state) => ({
