@@ -20,7 +20,7 @@ export const ENDPOINTS = {
                 method: "get",
             },
             getPodcast: {
-                url: "/lookup?id=:id&country=US&media=podcast&entity=allPodcastEpisode&limit=20",
+                url: "/lookup?id=:id&country=US&media=podcast&entity=podcastEpisode&limit=20/json",
                 method: "get",
             },
         },
