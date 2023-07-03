@@ -5,7 +5,10 @@ import './index.css';
 
 const Header = (props) => (
     <div className='header-container'>
-        <div className='podcaster-link' onClick={props.onDashboard}>
+        <div 
+            className='podcaster-link'
+            onClick={props.onDashboard}
+        >
             Podcaster
         </div>
         {props.isNavigate && <div className='navigation-sensor' />}
