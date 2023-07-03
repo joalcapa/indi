@@ -9,4 +9,4 @@ export const CORS_API_URL = CORS_API[ENV];
 
 export const CORS_API_RAW_URL = CORS_API_RAW[ENV];
 
-axios.defaults.baseURL = `${CORS_API_URL}${API_URL}`;
+axios.defaults.baseURL = API_URL;
